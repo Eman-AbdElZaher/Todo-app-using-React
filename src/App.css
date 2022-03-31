@@ -1,38 +1,280 @@
-.App {
-  text-align: center;
+:root {
+  --BrightBlue: hsl(220, 98%, 61%);
+  --Background: linear-gradient(hsl(192, 100%, 67%) to hsl(280, 87%, 65%));
+  --VeryLightGray: hsl(0, 0%, 98%);
+  --VeryLightGrayishBlue: hsl(236, 33%, 92%);
+  --LightGrayishBlue: hsl(233, 11%, 84%);
+  --DarkGrayishBlue: hsl(236, 9%, 61%);
+  --VeryDarkGrayishBlue: hsl(235, 19%, 35%);
+  /* Dark Theme */
+  --VeryDarkBlue: hsl(235, 21%, 11%);
+  --VeryDarkDesaturatedBlue: hsl(235, 24%, 19%);
+  --LightGrayishBlue: hsl(234, 39%, 85%);
+  --LightGrayishBlueHover: hsl(236, 33%, 92%);
+  --DarkGrayishBlue: hsl(234, 11%, 52%);
+  --VeryDarkGrayishBluelight: hsl(233, 14%, 35%);
+  --VeryDarkGrayishBlue: hsl(237, 14%, 26%);
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+header {
+  width: 100%;
+  height: 300px;
+  max-height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url(./assets/images/bg-desktop-dark.jpg);
+  background-size: cover;
+}
+.light header {
+  background-image: url(./assets/images/bg-desktop-light.jpg);
+}
+.container {
+  width: 540px;
+  margin: 0 auto;
+}
+.app-title {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 45px;
+}
+.app-title h1 {
+  color: #fff;
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: 18px;
+  text-transform: uppercase;
+}
+.input-container {
+  background-color: var(--VeryDarkDesaturatedBlue);
+  padding: 20px;
+  height: 65px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+.list-item .item-check-wrapper {
+  margin-right: 15px;
+  cursor: pointer;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+.input-container span,
+.item-check {
+  display: inline-block;
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+  background: transparent;
+  border: 1px solid hsl(237, 14%, 26%);
 }
 
-.App-link {
-  color: #61dafb;
+.list-item:not(.completed) .item-check-wrapper:hover {
+  background: linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+}
+.list-item:not(.completed) .item-check-wrapper:hover > .item-check {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--VeryDarkDesaturatedBlue);
+}
+.input-container input {
+  border: none;
+  outline: none;
+  width: 90%;
+  margin-left: 15px;
+  background-color: transparent;
+  caret-color: var(--BrightBlue);
+  font-size: 17px;
+  line-height: 23px;
+  font-weight: 400;
+  color: var(--LightGrayishBlue);
+}
+input::placeholder {
+  color: var(--DarkGrayishBlue);
+}
+.list-container {
+  width: 100vw;
+  height: calc(100vh - 300px);
+  background-color: hsl(235, 21%, 11%);
+}
+.light .list-container {
+  background-color: var(--VeryLightGrayishBlue);
+}
+.items-list {
+  background-color: var(--VeryDarkDesaturatedBlue);
+  border-radius: 5px;
+  transform: translateY(-55px);
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.list {
+  max-height: 320px;
+  overflow: hidden;
+}
+.list:hover {
+  overflow-y: scroll;
+}
+::-webkit-scrollbar {
+  width: 5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 2px var(--VeryDarkDesaturatedBlue);
+  border-radius: 2px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--VeryDarkGrayishBlue);
+  border-radius: 2px;
+}
+.todo-setting {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  font-size: 14px;
+  text-transform: capitalize;
+  color: var(--DarkGrayishBlue);
+}
+.todo-setting span {
+  cursor: pointer;
+}
+.todo-setting span:hover {
+  color: var(--LightGrayishBlue);
+}
+.switch span:not(:last-child) {
+  margin-right: 20px;
+}
+.list-item {
+  display: flex;
+  padding: 20px;
+  max-height: 65px;
+  border-bottom: 1px solid var(--VeryDarkGrayishBlue);
+}
+.list-item p {
+  width: 88%;
+  height: 20px;
+  overflow: hidden;
+  font-size: 17px;
+  line-height: 23px;
+  font-weight: 400;
+  cursor: grab;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--LightGrayishBlue);
+}
+.active {
+  color: var(--BrightBlue);
+}
+.delete {
+  opacity: 0;
+  cursor: pointer;
+}
+.list-item:hover > .delete {
+  opacity: 1;
+}
+.completed p {
+  text-decoration: line-through;
+  color: var(--DarkGrayishBlue);
+}
+.completed .item-check {
+  background: url(./assets/images/icon-check.svg),
+    linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.light .input-container,
+.light .items-list,
+.light .mobile-filter-option {
+  background-color: var(--VeryLightGray);
+}
+.light .list-item,
+.light .input-container span,
+.light .list-item .item-check {
+  border-color: var(--LightGrayishBlue);
+}
+.light p,
+.light .todo-setting span:hover {
+  color: var(--VeryDarkGrayishBluelight);
+}
+.light .list-item:not(.completed) .item-check-wrapper:hover > .item-check {
+  background-color: #fff;
+}
+.light .completed p,
+.light .input-container input,
+.light .mobile-filter-option {
+  color: var(--DarkGrayishBlue);
+}
+.mobile-filter-option {
+  display: none;
+  border-radius: 5px;
+  color: var(--DarkGrayishBlue);
+  background-color: var(--VeryDarkDesaturatedBlue);
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+@media (max-width: 550px) {
+  body {
+    font-size: 1.2rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  header {
+    background-image: url(../src/assets/images/bg-mobile-dark.jpg);
+    height: 200px;
+  }
+
+  .app-title {
+    margin-bottom: 35px;
+  }
+
+  .app-title h1 {
+    letter-spacing: 12px;
+  }
+
+  .input-container {
+    margin-bottom: 16px;
+  }
+  .list-container {
+    height: calc(100vh - 200px);
+  }
+  .input-container input {
+    height: 45px;
+    font-size: inherit;
+  }
+  .container {
+    width: 90%;
+  }
+  .items-list {
+    transform: translateY(-30px);
+  }
+  .list-item,
+  .input-container {
+    padding: 16px;
+    height: 60px;
+  }
+  .input-container span,
+  .list-item .item-check-wrapper,
+  .item-check {
+    width: 22px;
+    height: 22px;
+  }
+  .mobile-filter-option {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    font-size: 15px;
+    margin-top: -10px;
+  }
+  .mobile-filter-option span {
+    cursor: pointer;
+  }
+  .switch {
+    display: none;
   }
 }
